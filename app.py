@@ -1,3 +1,4 @@
+import requests
 import streamlit as st
 import numpy as np
 import json
@@ -5,12 +6,11 @@ from PIL import Image
 import plotly.express as px
 import os
 import tensorflow as tf
-import requests
 
 # ============================================================
 # CONFIG
 # ============================================================
-MODEL_URL = "https://huggingface.co/onixasf/skin-cancer-efficientnetb3/resolve/main/best_efficientnet.keras"
+MODEL_URL = "https://huggingface.co/spaces/onixasf/skin-cancer-efficientNetB3/resolve/main/best_efficientnet.keras"
 MODEL_PATH = "best_efficientnet.keras"
 CLASS_PATH = "class_names.json"
 IMG_SIZE = (300, 300)
@@ -30,6 +30,7 @@ def download_model():
     if not os.path.exists(MODEL_PATH):
         with st.spinner("📥 Downloading model..."):
             r = requests.get(MODEL_URL)
+            r.raise_for_status()
             with open(MODEL_PATH, "wb") as f:
                 f.write(r.content)
 
