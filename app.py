@@ -7,9 +7,6 @@ import plotly.express as px
 import os
 import tensorflow as tf
 
-st.title("🩺 Skin Cancer Classification App")
-st.write("Streamlit is running...")
-
 # ============================================================
 # CONFIG
 # ============================================================
@@ -24,6 +21,17 @@ st.set_page_config(
     page_icon="🩺",
     layout="wide"
 )
+
+# ============================================================
+# CSS
+# ============================================================
+st.markdown("""
+<style>
+html, body { font-family: 'Segoe UI', sans-serif; }
+.main-title { font-size: 44px; font-weight: 800; color: ##405d7a; text-align: center; margin-top: -20px; }
+.sub-title { font-size: 20px; color: #566573; text-align: center; margin-bottom: 30px; }
+</style>
+""", unsafe_allow_html=True)
 
 # ============================================================
 # DOWNLOAD MODEL FROM HUGGINGFACE
