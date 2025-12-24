@@ -39,17 +39,22 @@ def download_model():
 
 download_model()
 
-# ============================================================
-# LOAD MODEL & CLASS NAMES
-# ============================================================
-@st.cache_resource
-def load_model():
-    return tf.keras.models.load_model(MODEL_PATH)
+with tab4:
+    st.header("🩺 Try Image Prediction")
 
-@st.cache_resource
-def load_class_names():
-    with open(CLASS_PATH, "r") as f:
-        return json.load(f)
+    @st.cache_resource
+    def load_model():
+        return tf.keras.models.load_model(MODEL_PATH)
 
-model = load_model()
-class_names = load_class_names()
+    @st.cache_resource
+    def load_class_names():
+        with open(CLASS_PATH, "r") as f:
+            return json.load(f)
+
+    model = load_model()
+    class_names = load_class_names()
+
+    uploaded_file = st.file_uploader(
+        "Upload gambar skin lesion (JPG/PNG)",
+        type=["jpg", "jpeg", "png"]
+    )
