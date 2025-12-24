@@ -7,6 +7,9 @@ import plotly.express as px
 import os
 import tensorflow as tf
 
+st.title("🩺 Skin Cancer Classification App")
+st.write("Streamlit is running...")
+
 # ============================================================
 # CONFIG
 # ============================================================
